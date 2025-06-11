@@ -17,21 +17,21 @@ load_dotenv()  # .env 파일 불러오기
 eleven_api_key = str(os.getenv("ELEVENLABS_API_KEY"))  # 키 가져오기
 
 def makeVoiceOutput(JSON_FILE):
+
     VOICE_ID_MAP = {
         "윤성연": "jWRUqvGq5PXd9oOHziob",  # voice ID
-
         # "윤지쌤": "jWRUqvGq5PXd9oOHziob",  #voice ID
-        # "윤환쌤": "jWRUqvGq5PXd9oOHziob",  #voice ID
-        # "보경쌤": "jWRUqvGq5PXd9oOHziob",  #voice ID
+        "다연쌤": "DYn4SbPEhzOygOr62bgg",  #voice ID
+        "윤환쌤": "VToO2FzplaCc9g1rW2KU",  #voice ID
+        "보경쌤": "KK5Kdi6pGnk2nGk099sY",  #voice ID
         # "영철쌤": "jWRUqvGq5PXd9oOHziob",  #voice ID
-        # "지웅쌤": "jWRUqvGq5PXd9oOHziob",  #voice ID
-
+        "지웅쌤": "aw8KVqVoVI3mmUcyPXXz",  #voice ID
+        "호식쌤": "HSaoQxZa3a9TnththUL3"  # voice ID
         # 다른 목소리도 필요하면 여기에 추가
     }
 
-
-    voice_name = JSON_FILE["voice"]
-    voice_id = VOICE_ID_MAP.get(voice_name)
+    voice_name = JSON_FILE["voice"] # 더미 파일에서 voice 이름 가져와 저장
+    voice_id = VOICE_ID_MAP.get(voice_name) # 이름에 맞는 voice id 저장
 
     if voice_id is None:
         raise ValueError(f"지원하지 않는 voice 이름입니다: {voice_name}")
