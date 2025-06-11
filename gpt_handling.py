@@ -1,5 +1,6 @@
 import cohere
 from dotenv import load_dotenv
+import random
 import os
 
 load_dotenv()  # .env 파일 불러오기
@@ -7,8 +8,38 @@ api_key = os.getenv("COHERE_API_KEY")  # 키 가져오기
 
 co = cohere.Client(api_key)
 
-menu = int(input("1. 그리핀도르 2. 슬리데린 3. 레번클로 4. 후플푸프 : "))
-question = input("고민을 입력하세요 : ")
+
+# 더미 프론트에서 받아올 JSON 형식
+dummy_request = {
+    "name" : "한지연",
+    "worry" : "대충 입력한 고민",
+    "department" : "S" # 학과 S,D (답변 해주실 선생님을 분류하기 위함)
+}
+
+def makePrompt(JSON_FILE):
+    userName = JSON_FILE["name"]
+    userWorry = JSON_FILE["worry"]
+    userDepartment = JSON_FILE["department"]
+
+    teachersPrompt = {
+        "윤지쌤": "여기에 성격과 말투를 나타내는 프롬프트 작성",
+        " ": "",
+        "윤환쌤": "여기에 성격과 말투를 나타내는 프롬프트 작성",
+        "보경쌤": "여기에 성격과 말투를 나타내는 프롬프트 작성",
+        "영철쌤": "여기에 성격과 말투를 나타내는 프롬프트 작성",
+        "지웅쌤": "여기에 성격과 말투를 나타내는 프롬프트 작성"
+        # 다른 목소리도 필요하면 여기에 추가
+    }
+
+    #menu = int(input("1. 그리핀도르 2. 슬리데린 3. 레번클로 4. 후플푸프 : "))
+
+    if(userDepartment == "S"): #솦과 (디자인과쌤 제외)
+        randomNumber = random.randint(1, 5)
+    else: #디자인과 (솦과쌤 제외)
+        randomNumber = random.randint(5, len(teachersPrompt))
+
+
+
 
 response = ""
 
