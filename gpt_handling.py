@@ -1,9 +1,10 @@
-from flask import Flask, request, jsonify, send_file
+from flask import Flask, request, jsonify
 from flask_cors import CORS
 from dotenv import load_dotenv
 import cohere
 import os
 import random
+import base64
 
 from file_management import makeVoiceOutput
 
@@ -27,7 +28,7 @@ def makePrompt(JSON_FILE):
         "영철쌤": "무뚝뚝한데 약간 유쾌한 말투로 이름을 넣어서 고민의 이유를 추론하고 현실적인 조언을 툭 던지듯한 말투로",
         "지웅쌤": "여기에 성격과 말투를 나타내는 프롬프트 작성",
         "호식쌤": "직설적인 말투로 팩트를 얘기하며 정신이 번쩍 들 수 있는 따끔한 멘트로",
-        "태연쌤": "차분한 말투로"
+        "태연쌤": "친근하고 따뜻한말투지만 쿨하게 적당한 공감과 적당한 해결책을 제시해주는 말투로"
     }
 
     prompts = list(teachersPrompt.items())
@@ -59,11 +60,19 @@ def handle_prompt():
         json_data = request.get_json()
         result = makePrompt(json_data)
 
-        #음성 생성
-        makeVoiceOutput(result)
+        # 음성 생성
+        makeVoiceOutput(result)  # voice.mp3 생성됨
 
-        #voice.mp3 파일을 클라이언트에 보내기
-        return send_file("voice.mp3", mimetype="audio/mpeg")
+        # voice.mp3 파일을 base64로 변환
+        with open("voice.mp3", "rb") as f:
+            audio_base64 = base64.b64encode(f.read()).decode('utf-8')
+
+        # JSON 응답으로 음성과 정보 함께 전송
+        return jsonify({
+            "voice": result["voice"],
+            "text": result["text"],
+            "audio": audio_base64
+        })
 
     except Exception as e:
         return jsonify({"error": str(e)}), 500

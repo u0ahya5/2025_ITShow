@@ -4,13 +4,6 @@
 from dotenv import load_dotenv
 import requests
 import os
-
-# 더미 입력값
-dummy_request = {
-    "voice": "윤성연", #보이스 이름
-    "text": "뿅!" #변환할 말
-}
-
 # ElevenLabs API 설정
 
 load_dotenv()  # .env 파일 불러오기
@@ -45,10 +38,11 @@ def makeVoiceOutput(JSON_FILE):
 
     data = {
         "text": JSON_FILE["text"],
-        "model_id": "eleven_multilingual_v2",  # 또는 필요 시 다른 모델
+        "model_id": "eleven_multilingual_v2",  # 필요 시 다른 모델로 변경 가능
         "voice_settings": {
-            "stability": 0.5,
-            "similarity_boost": 0.5
+            "stability": 1.0,
+            "similarity_boost": 1.0,
+            "style": 0.75
         }
     }
 
@@ -66,5 +60,4 @@ def makeVoiceOutput(JSON_FILE):
         print(response.text)
 
 
-makeVoiceOutput(dummy_request)
 
