@@ -20,14 +20,14 @@ def makeVoiceOutput(JSON_FILE):
 
     VOICE_ID_MAP = {
         "윤성연": "jWRUqvGq5PXd9oOHziob",  # voice ID
-        # "윤지쌤": "jWRUqvGq5PXd9oOHziob",  #voice ID
+        "윤지쌤": "TEGif9XnTHchVeIqcots",  #voice ID
         "다연쌤": "DYn4SbPEhzOygOr62bgg",  #voice ID
         "윤환쌤": "VToO2FzplaCc9g1rW2KU",  #voice ID
         "보경쌤": "KK5Kdi6pGnk2nGk099sY",  #voice ID
-        # "영철쌤": "jWRUqvGq5PXd9oOHziob",  #voice ID
+        "영철쌤": "bbeBsYDC1q79JwuU9hov",  #voice ID
         "지웅쌤": "aw8KVqVoVI3mmUcyPXXz",  #voice ID
-        "호식쌤": "HSaoQxZa3a9TnththUL3"  # voice ID
-        # 다른 목소리도 필요하면 여기에 추가
+        "호식쌤": "HSaoQxZa3a9TnththUL3",  # voice ID
+        "태연쌤": "dl7ZwL7RPjznEpmv3tp1"
     }
 
     voice_name = JSON_FILE["voice"] # 더미 파일에서 voice 이름 가져와 저장
