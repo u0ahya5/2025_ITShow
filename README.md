@@ -1,4 +1,3 @@
-🔑 환경변수 설정
-1. `.env.example` 파일을 복사해서 `.env` 파일을 만듭니다.
-2. COHERE_API_KEY 자리에 본인의 키를 입력합니다.
-(key 발급 - https://dashboard.cohere.com/api-keys)
+<h1>2025 ITShow 출품작 - 미림 마법 고민해결</h1>
+<img width="1086" height="772" alt=<img width="1085" height="773" alt="스크린샷 2025-10-17 111539" src="https://github.com/user-attachments/assets/c4d21187-669e-4f57-9b9a-65581a525b0f" />
+<img width="1086" height="772" alt="스크린샷 2025-10-17 111504" src="https://github.com/user-attachments/assets/41ea1bfd-4388-424e-94be-ac29135a83ef" />
